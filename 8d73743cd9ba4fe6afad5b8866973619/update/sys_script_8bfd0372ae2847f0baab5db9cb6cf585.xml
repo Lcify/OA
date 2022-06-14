@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_script">
+  <sys_script action="INSERT_OR_UPDATE">
+    <abort_action/>
+    <access>package_private</access>
+    <action_delete/>
+    <action_insert>true</action_insert>
+    <action_query/>
+    <action_update>true</action_update>
+    <active>true</active>
+    <add_message/>
+    <advanced>true</advanced>
+    <change_fields>false</change_fields>
+    <client_callable/>
+    <collection>crm_home_sign_record</collection>
+    <condition/>
+    <description/>
+    <execute_function>false</execute_function>
+    <filter_condition/>
+    <is_rest>false</is_rest>
+    <message/>
+    <name>新增打卡记录1</name>
+    <order>100</order>
+    <priority>100</priority>
+    <rest_method/>
+    <rest_method_text/>
+    <rest_service/>
+    <rest_service_text/>
+    <rest_variables/>
+    <role_conditions/>
+    <script>//打卡时间
+var sign_time = current.getValue('sign_time');
+//打开日期
+var sign_date = current.getValue('sign_date');
+//打卡类型
+var type = current.getValue('type');
+//员工
+var user = current.getValue('user');
+var gr = new GlideRecord('crm_time_statistics_daily');
+gr.addQuery('sign_date', sign_date);
+gr.addQuery('user', user);
+gr.query();
+//插入考勤日报
+gr.setValue('user', user);
+gr.setValue('sign_date', sign_date);
+gr.setValue('department',current.getValue('department'));
+gr.setValue('title',current.getValue('title'));
+insertDailyData(gr, type, sign_time);
+gs.addInfoMessage('更新考勤统计成功');
+
+function insertDailyData( /*GlideRecord*/ gr, type, sign_time) {
+    //打上班卡
+    if (type == 'sb') {
+        gr.setValue('start_time', sign_time);
+        gr.insert();
+        return;
+    }
+    //打下班卡时，没有上班卡
+    if (!gr.next()) {
+        gr.setValue('end_time', sign_time);
+        gr.insert();
+        return;
+    }
+    gr.setValue('end_time', sign_time);
+    //上班打卡时间
+    var sb = gr.getValue('start_time');
+    //下班打卡时间
+    var xb = sign_time;
+    //上班时间
+    var standSb = java.time.LocalDateTime.of(sb.getYear(), sb.getMonth(), sb.getDayOfMonth(), 9, 0, 0);
+    //下班时间
+    var standXb = java.time.LocalDateTime.of(sb.getYear(), sb.getMonth(), sb.getDayOfMonth(), 18, 0, 0);
+    //工作时常
+    var workTime = java.lang.Math.round(java.time.Duration.between(sb, xb).toMinutes() / 60.0 * 10) / 10;
+    gr.setValue('work_duration', workTime);
+    if (sb.isAfter(standSb)) {
+        //迟到时常
+        var xdTime = java.lang.Math.round(java.time.Duration.between(sb, standSb).toMinutes() / 60.0 * 10) / 10;
+        gr.setValue('late_time', xdTime);
+    }
+    if (xb.isBefore(standXb)) {
+        //早退时常
+        var ztTime = java.lang.Math.round(java.time.Duration.between(xb, standXb).toMinutes() / 60.0 * 10) / 10;
+        gr.setValue('early_time', ztTime);
+    }
+    if (workTime &gt; 8) {
+        var jbTime = java.lang.Math.round((workTime - 8) * 10) / 10;
+        //加班
+        gr.setValue('over_duration', jbTime);
+    }
+    gr.update();
+}</script>
+    <sys_class_name>sys_script</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 18:42:37</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>8bfd0372ae2847f0baab5db9cb6cf585</sys_id>
+    <sys_mod_count>17</sys_mod_count>
+    <sys_name>新增打卡记录</sys_name>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>8d73743cd9ba4fe6afad5b8866973619</sys_scope>
+    <sys_update_name>sys_script_8bfd0372ae2847f0baab5db9cb6cf585</sys_update_name>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-29 15:30:00</sys_updated_on>
+    <template/>
+    <when>after</when>
+  </sys_script>
+</record_update>

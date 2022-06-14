@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="wf_workflow">
+  <wf_workflow action="INSERT_OR_UPDATE">
+    <access>public</access>
+    <description/>
+    <name>work-data-test</name>
+    <preview/>
+    <sys_class_name>wf_workflow</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 11:01:45</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>490da62234134c259cd80b4b24fbb808</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>8d73743cd9ba4fe6afad5b8866973619</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 11:01:45</sys_updated_on>
+    <table>workflow_data_test</table>
+    <template>false</template>
+  </wf_workflow>
+  <wf_workflow_version action="INSERT_OR_UPDATE">
+    <act_def_id>e9b05aac-ab1e-11ec-af8f-005056a08711</act_def_id>
+    <active>true</active>
+    <activity_stages/>
+    <after_business_rules/>
+    <bpmn>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://activiti.org/bpmn" id="Definitions_1"&gt;
+  &lt;process id="_34d09b56-d8f4-471f-b50e-889ea7e030a5" isExecutable="true"&gt;
+    &lt;startEvent id="_113555c4615442bcaffe5943e0db4d62" name="开始"&gt;
+      &lt;bounds key="_7c95f435-3d65-4f4c-b75b-051729a51b13" sys_id="a86839ae45ec40a6ac26c425be1c8367" name="开始" displayName="开始" category="Utilities" image="" parent="Utilities" activityCoreType="startEvent" activityType="Begin" toPortId="_1c273698-6246-4372-9ebf-83868864d3e9" actType="startEvent" bizType="startEvent" loc="-588.2075811258952 56.43402727762856" workflowInstanceId="" workflow_displayValue="" workflow_value="" stageName=""/&gt;
+      &lt;conditionList&gt;
+        &lt;condition id="af8f7ffd45f4497da70e6f927e04abe0" name="总是" fromPortId="_03b663b0-84a5-4702-90ed-ecb64a3931bd"/&gt;
+      &lt;/conditionList&gt;
+    &lt;/startEvent&gt;
+    &lt;endEvent id="_07760a2c64114ed6afe82ef9a976cd53" name="结束"&gt;
+      &lt;bounds key="_193c0a1e-5b3d-4733-85a5-812c16c7160f" sys_id="c0a6be81346e4fac9895b8b5b8472b0a" name="结束" displayName="结束" category="Utilities" image="" parent="Utilities" activityCoreType="endEvent" activityType="End" toPortId="_cec80628-2a1c-49d9-b954-b388ab779dab" actType="endEvent" bizType="endEvent" loc="-186.41505251567128 538.1813575263315" workflowInstanceId="" workflow_displayValue="" workflow_value="" stageName=""/&gt;
+      &lt;conditionList/&gt;
+    &lt;/endEvent&gt;
+    &lt;receiveTask id="_c18378b3b95a4958a143da3f8384d772" name="runScript"&gt;
+      &lt;bounds key="_e996832d-b7a4-4f32-b6c7-d2855da4bb70" sys_id="4b9c9712c51e4634a9c6670e6779815f" name="runScript" displayName="更新水平" category="Utilities" parent="Utilities" activityCoreType="receiveTask" activityType="Run Script" toPortId="_62dc29c4-b8f5-4721-b6a7-e80ff6105221" actType="Run Script" bizType="Run Script" loc="-205 267" stageName=""/&gt;
+      &lt;conditionList&gt;
+        &lt;condition id="79a50656e7614acea3aade02c3271030" name="总是" fromPortId="_79a50656e7614acea3aade02c3271030"/&gt;
+      &lt;/conditionList&gt;
+    &lt;/receiveTask&gt;
+    &lt;sequenceFlow id="_af8f7ffd45f4497da70e6f927e04abe0-_c18378b3b95a4958a143da3f8384d772" sourceRef="_113555c4615442bcaffe5943e0db4d62" targetRef="_c18378b3b95a4958a143da3f8384d772"&gt;
+      &lt;conditionExpression/&gt;
+      &lt;waypoint from="_7c95f435-3d65-4f4c-b75b-051729a51b13" to="_e996832d-b7a4-4f32-b6c7-d2855da4bb70" fromPort="_03b663b0-84a5-4702-90ed-ecb64a3931bd" toPort="_62dc29c4-b8f5-4721-b6a7-e80ff6105221" points="List()#7686"/&gt;
+    &lt;/sequenceFlow&gt;
+    &lt;sequenceFlow id="_79a50656e7614acea3aade02c3271030-_07760a2c64114ed6afe82ef9a976cd53" sourceRef="_c18378b3b95a4958a143da3f8384d772" targetRef="_07760a2c64114ed6afe82ef9a976cd53"&gt;
+      &lt;conditionExpression&gt;${conditionResult.contains('79a50656e7614acea3aade02c3271030')}&lt;/conditionExpression&gt;
+      &lt;waypoint from="_e996832d-b7a4-4f32-b6c7-d2855da4bb70" to="_193c0a1e-5b3d-4733-85a5-812c16c7160f" fromPort="_79a50656e7614acea3aade02c3271030" toPort="_cec80628-2a1c-49d9-b954-b388ab779dab" points="List()#7986"/&gt;
+    &lt;/sequenceFlow&gt;
+  &lt;/process&gt;
+&lt;/definitions&gt;</bpmn>
+    <checked_out/>
+    <checked_out_by/>
+    <column_renderer/>
+    <condition/>
+    <condition_type>run_match</condition_type>
+    <description/>
+    <expected_sequences/>
+    <expected_time/>
+    <expected_time_type/>
+    <full_sequences/>
+    <journal/>
+    <max_activity_count>100</max_activity_count>
+    <name>work-data-test</name>
+    <not_cacheable>false</not_cacheable>
+    <on_cancel>// This script executes if the workflow is cancelled.// The global variable context_sys_id contains the sys_id of the cancelled workflow context.</on_cancel>
+    <order>100</order>
+    <pin_type>set_by_activity</pin_type>
+    <published>true</published>
+    <relative_duration/>
+    <requires_ert>true</requires_ert>
+    <run_multiple/>
+    <schedule/>
+    <stage_field/>
+    <stage_order>computed</stage_order>
+    <start/>
+    <sys_class_name>wf_workflow_version</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 11:01:45</sys_created_on>
+    <sys_effective/>
+    <sys_id>f3be0a4e71a046f3be5cf9fb3fecf8e4</sys_id>
+    <sys_mod_count>5</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 11:03:00</sys_updated_on>
+    <table>workflow_data_test</table>
+    <timezone/>
+    <validated/>
+    <workflow>490da62234134c259cd80b4b24fbb808</workflow>
+  </wf_workflow_version>
+  <wf_activity action="INSERT_OR_UPDATE">
+    <activity_definition>a86839ae45ec40a6ac26c425be1c8367</activity_definition>
+    <activity_definition_updated>false</activity_definition_updated>
+    <databus_lookup_id/>
+    <height/>
+    <input/>
+    <is_parent>false</is_parent>
+    <name>开始</name>
+    <new_activity_definition/>
+    <notes/>
+    <out_of_date>false</out_of_date>
+    <parent/>
+    <pinned>false</pinned>
+    <pinned_version/>
+    <stage/>
+    <sys_class_name>wf_activity</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 11:01:46</sys_created_on>
+    <sys_effective/>
+    <sys_id>113555c4615442bcaffe5943e0db4d62</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 11:01:46</sys_updated_on>
+    <timeout/>
+    <vars/>
+    <width>80</width>
+    <workflow_version>f3be0a4e71a046f3be5cf9fb3fecf8e4</workflow_version>
+    <x>20</x>
+    <y>20</y>
+  </wf_activity>
+  <wf_activity action="INSERT_OR_UPDATE">
+    <activity_definition>c0a6be81346e4fac9895b8b5b8472b0a</activity_definition>
+    <activity_definition_updated>false</activity_definition_updated>
+    <databus_lookup_id/>
+    <height/>
+    <input/>
+    <is_parent>false</is_parent>
+    <name>结束</name>
+    <new_activity_definition/>
+    <notes/>
+    <out_of_date>false</out_of_date>
+    <parent/>
+    <pinned>false</pinned>
+    <pinned_version/>
+    <stage/>
+    <sys_class_name>wf_activity</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 11:01:47</sys_created_on>
+    <sys_effective/>
+    <sys_id>07760a2c64114ed6afe82ef9a976cd53</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 11:01:47</sys_updated_on>
+    <timeout/>
+    <vars/>
+    <width>80</width>
+    <workflow_version>f3be0a4e71a046f3be5cf9fb3fecf8e4</workflow_version>
+    <x>400</x>
+    <y>150</y>
+  </wf_activity>
+  <wf_activity action="INSERT_OR_UPDATE">
+    <activity_definition>4b9c9712c51e4634a9c6670e6779815f</activity_definition>
+    <activity_definition_updated>false</activity_definition_updated>
+    <databus_lookup_id/>
+    <height/>
+    <input/>
+    <is_parent>false</is_parent>
+    <name>更新水平</name>
+    <new_activity_definition/>
+    <notes/>
+    <out_of_date>false</out_of_date>
+    <parent/>
+    <pinned>false</pinned>
+    <pinned_version/>
+    <stage/>
+    <sys_class_name>wf_activity</sys_class_name>
+    <sys_created_by/>
+    <sys_created_on>2022-03-24 11:02:41</sys_created_on>
+    <sys_effective/>
+    <sys_id>c18378b3b95a4958a143da3f8384d772</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 11:02:41</sys_updated_on>
+    <timeout/>
+    <vars/>
+    <width/>
+    <workflow_version>f3be0a4e71a046f3be5cf9fb3fecf8e4</workflow_version>
+    <x/>
+    <y/>
+  </wf_activity>
+  <wf_condition action="INSERT_OR_UPDATE">
+    <activity>113555c4615442bcaffe5943e0db4d62</activity>
+    <condition>true</condition>
+    <condition_default/>
+    <condition_type>standard</condition_type>
+    <else_flag>false</else_flag>
+    <error>false</error>
+    <event>false</event>
+    <event_name/>
+    <is_positive>false</is_positive>
+    <name>开始</name>
+    <order>1</order>
+    <short_description/>
+    <skip_during_generate>false</skip_during_generate>
+    <sys_class_name>wf_condition</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 11:01:47</sys_created_on>
+    <sys_effective/>
+    <sys_id>af8f7ffd45f4497da70e6f927e04abe0</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 11:01:47</sys_updated_on>
+  </wf_condition>
+  <wf_condition action="INSERT_OR_UPDATE">
+    <activity>c18378b3b95a4958a143da3f8384d772</activity>
+    <condition>true</condition>
+    <condition_default>5f731b6470f344b585728cf9b757dd7c</condition_default>
+    <condition_type>standard</condition_type>
+    <else_flag>false</else_flag>
+    <error>false</error>
+    <event>false</event>
+    <event_name/>
+    <is_positive>false</is_positive>
+    <name>总是</name>
+    <order>1</order>
+    <short_description/>
+    <skip_during_generate>false</skip_during_generate>
+    <sys_class_name>wf_condition</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 11:02:41</sys_created_on>
+    <sys_effective/>
+    <sys_id>79a50656e7614acea3aade02c3271030</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 11:02:41</sys_updated_on>
+  </wf_condition>
+  <wf_workflow_version action="UPDATE_MULTIPLE" query="workflow=490da62234134c259cd80b4b24fbb808^sys_id!=f3be0a4e71a046f3be5cf9fb3fecf8e4">
+    <published>false</published>
+  </wf_workflow_version>
+</record_update>

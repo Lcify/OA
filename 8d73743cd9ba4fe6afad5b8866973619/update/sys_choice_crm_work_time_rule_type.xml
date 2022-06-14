@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_choice">
+  <sys_choice action="INSERT_OR_UPDATE">
+    <dependent_value/>
+    <element>type</element>
+    <hint/>
+    <inactive>false</inactive>
+    <label>按星期</label>
+    <language>en</language>
+    <name>crm_work_time_rule</name>
+    <sequence>0</sequence>
+    <synonyms/>
+    <sys_class_name>sys_choice</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-22 19:50:35</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>c0869434ea7e474b9a0b14d39b7b51b0</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-22 19:50:35</sys_updated_on>
+    <value>A0</value>
+  </sys_choice>
+</record_update>

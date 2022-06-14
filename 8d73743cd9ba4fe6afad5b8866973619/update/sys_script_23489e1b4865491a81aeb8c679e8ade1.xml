@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_script">
+  <sys_script action="INSERT_OR_UPDATE">
+    <abort_action/>
+    <access>package_private</access>
+    <action_delete/>
+    <action_insert/>
+    <action_query/>
+    <action_update>true</action_update>
+    <active>true</active>
+    <add_message/>
+    <advanced>true</advanced>
+    <change_fields>false</change_fields>
+    <client_callable/>
+    <collection>crm_post_info</collection>
+    <condition>current.getElement("staff_status").changesTo("R0")&amp;&amp;current.getValue("work_type")=="A0"</condition>
+    <description/>
+    <execute_function>false</execute_function>
+    <filter_condition/>
+    <is_rest>false</is_rest>
+    <message/>
+    <name>员工试用期通过状态</name>
+    <order>100</order>
+    <priority>100</priority>
+    <rest_method/>
+    <rest_method_text/>
+    <rest_service/>
+    <rest_service_text/>
+    <rest_variables/>
+    <role_conditions/>
+    <script>//1. 开始工作时间
+var staff_start_date = current.getValue("staff_start_date");
+// 员工年假
+var annual_leave = annualLeave(staff_start_date);
+var user = current.getValue('user');
+var gr = new GlideRecord('crm_holiday');
+gr.addQuery('user', user);
+gr.query();
+if (gr.next()) {
+    gr.setValue('annual_leave', annual_leave);
+    gr.update();
+} else {
+    gr.setValue('user', user);
+    gr.setValue('annual_leave', annual_leave);
+    gr.insert();
+}
+gs.addInfoMessage('员工年假插入成功！');
+
+
+//计算年假
+function annualLeave( /*开始工作日期*/ staff_start_date) {
+    var annual_leave = 0;
+    staff_start_date = staff_start_date.replace(" ", "T");
+    var parse = java.time.LocalDateTime.parse(staff_start_date);
+    var now = java.time.LocalDateTime.now();
+    if (parse.plusYears(10).isAfter(now)) {
+        annual_leave = 5;
+    } else if (!parse.plusYears(10).isAfter(now) &amp;&amp; parse.plusYears(15).isAfter(now)) {
+        annual_leave = 10;
+    } else {
+        annual_leave = 15;
+    }
+    return annual_leave;
+}</script>
+    <sys_class_name>sys_script</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 13:52:00</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>23489e1b4865491a81aeb8c679e8ade1</sys_id>
+    <sys_mod_count>4</sys_mod_count>
+    <sys_name>员工试用期通过状态</sys_name>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>8d73743cd9ba4fe6afad5b8866973619</sys_scope>
+    <sys_update_name>sys_script_23489e1b4865491a81aeb8c679e8ade1</sys_update_name>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-24 15:04:42</sys_updated_on>
+    <template/>
+    <when>after</when>
+  </sys_script>
+</record_update>

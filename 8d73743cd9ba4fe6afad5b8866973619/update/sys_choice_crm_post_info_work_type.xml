@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_choice">
+  <sys_choice action="INSERT_OR_UPDATE">
+    <dependent_value/>
+    <element>work_type</element>
+    <hint/>
+    <inactive>false</inactive>
+    <label>全职</label>
+    <language>en</language>
+    <name>crm_post_info</name>
+    <sequence>1</sequence>
+    <synonyms/>
+    <sys_class_name>sys_choice</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-22 16:13:49</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>80a919705d8f443bb70fa0a427f561c0</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-22 16:13:49</sys_updated_on>
+    <value>A0</value>
+  </sys_choice>
+  <sys_choice action="INSERT_OR_UPDATE">
+    <dependent_value/>
+    <element>work_type</element>
+    <hint/>
+    <inactive>false</inactive>
+    <label>实习</label>
+    <language>en</language>
+    <name>crm_post_info</name>
+    <sequence>1</sequence>
+    <synonyms/>
+    <sys_class_name>sys_choice</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-22 16:14:25</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>97a98d9b44504bc5b3e2dd146884b6b9</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-22 16:14:25</sys_updated_on>
+    <value>A1</value>
+  </sys_choice>
+</record_update>

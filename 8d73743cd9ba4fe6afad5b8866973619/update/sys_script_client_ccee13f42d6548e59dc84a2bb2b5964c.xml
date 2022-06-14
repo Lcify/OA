@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_script_client">
+  <sys_script_client action="INSERT_OR_UPDATE">
+    <active>true</active>
+    <applies_extended>false</applies_extended>
+    <condition/>
+    <description/>
+    <field>user</field>
+    <global>true</global>
+    <isolate_script>false</isolate_script>
+    <messages/>
+    <name>员工与相关信息联动</name>
+    <order>100</order>
+    <script>function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    var user = new GlideRecord('sys_user');
+    user.get(newValue);
+    user.query(response);
+
+    function response(result, answer) {
+        while (result.next()) {
+            g_form.setValue('department', result.getValue('department'));
+            g_form.setValue('title', result.getValue('title'));
+            g_form.setValue('company', result.getValue('company'));
+        }
+    }   
+}</script>
+    <sys_class_name>sys_script_client</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-03-24 18:48:27</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>ccee13f42d6548e59dc84a2bb2b5964c</sys_id>
+    <sys_mod_count>4</sys_mod_count>
+    <sys_name>员工与相关信息联动</sys_name>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>8d73743cd9ba4fe6afad5b8866973619</sys_scope>
+    <sys_update_name>sys_script_client_ccee13f42d6548e59dc84a2bb2b5964c</sys_update_name>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-03-25 16:25:47</sys_updated_on>
+    <table>crm_sign_outside_record</table>
+    <type>onChange</type>
+    <ui_type>0</ui_type>
+    <view/>
+  </sys_script_client>
+</record_update>
